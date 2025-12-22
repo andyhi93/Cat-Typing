@@ -31,12 +31,7 @@ class NetworkManager {
     handleMessage(data) {
         try {
             const message = JSON.parse(data);
-            // 這裡可以根據訊息類型 (message.type) 將資料分發給其他系統
-            // 例如：
-            // if (message.type === 'player_update') {
-            //     gameManager.updatePlayerState(message.payload);
-            // }
-            // 由於 NetworkManager 不知道 GameManager 的細節，通常會使用回調函數 (Callbacks) 或事件系統來通知。
+
             console.log('Received:', message);
             
         } catch (e) {

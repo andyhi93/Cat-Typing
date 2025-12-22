@@ -1,32 +1,39 @@
-//(主程式)
-// 宣告全域變數來持有主要系統的實例
+// sketch.js (主程式)
+
 let gameManager;
 let networkManager;
+let inputDisplay;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(600, 400);
 
-  // 1. 初始化網路連線系統
-  // 伺服器連線邏輯全部放在 NetworkManager 類別中
-  networkManager = new NetworkManager('ws://localhost:9980');
-
-  // 2. 初始化遊戲管理系統
-  // 遊戲狀態、玩家、物件等邏輯全部放在 GameManager 類別中
+  networkManager = new NetworkManager('ws://localhost:9980'); 
   gameManager = new GameManager(networkManager);
+
+  inputDisplay = new InputDisplay(width / 2, height - 50);
+  gameManager.setInputDisplay(inputDisplay);
+
 }
 
 function draw() {
   background(220);
 
-  // 3. 更新遊戲狀態 (處理輸入、物理計算等)
   gameManager.update();
-  
-  // 4. 繪製遊戲畫面
   gameManager.display();
 }
 
-// 可選：將使用者輸入事件也委託給 GameManager 處理
-function mousePressed() {
-    gameManager.handleMousePressed();
+
+function keyTyped() {
+
+    gameManager.handleKey(key);
+
+    return false;
 }
-// ... 其他事件 (keyPressed, mouseReleased 等)
+
+
+function keyPressed() {
+    if (keyCode === BACKSPACE) {
+        gameManager.handleKey(null); // 傳遞 null 或其他標誌給 handleKey 處理
+    }
+}
+
