@@ -32,7 +32,7 @@ class NetworkManager {
         try {
             const message = JSON.parse(data);
 
-            console.log('Received:', message);
+            //console.log('Received:', message);
             
         } catch (e) {
             console.error('Error parsing JSON:', e);

@@ -4,9 +4,13 @@
 const CatState = {
     // 遊戲中使用的形狀狀態
     RUN: 0,
-    JUMP: 1,
-    CROUCH: 2,
-    POSE: 3 
+    NAP: 1,
+    DIAMOND: 2,
+    SQUADE: 3 ,
+    CLUB: 4,
+    HEART: 5,
+    BOWLING: 6,
+    JUMP:7
 };
 
 

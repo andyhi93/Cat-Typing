@@ -5,12 +5,12 @@ let networkManager;
 let inputDisplay;
 
 function setup() {
-  createCanvas(600, 400);
+  createCanvas(480, 270);
 
   networkManager = new NetworkManager('ws://localhost:9980'); 
   gameManager = new GameManager(networkManager);
 
-  inputDisplay = new InputDisplay(width / 2, height - 50);
+  inputDisplay = new InputDisplay(width / 2, height/2 - 50);
   gameManager.setInputDisplay(inputDisplay);
 
 }
